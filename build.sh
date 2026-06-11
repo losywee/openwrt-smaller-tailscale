@@ -62,6 +62,23 @@ env_vars=(
 [ -n "$GOMIPS" ] && env_vars+=(GOMIPS="$GOMIPS")
 [ -n "$GOARM" ] && env_vars+=(GOARM="$GOARM")
 
+cat > "$WORKDIR/tailscale/cmd/tailscale/cli/amnezia_truncate.go" <<EOF
+package cli
+func truncateAmneziaString(s string, maxLen int) string {
+	if maxLen <= 0 {
+		return ""
+	}
+	runes := []rune(s)
+	if len(runes) <= maxLen {
+		return s
+	}
+	if maxLen == 1 {
+		return "…"
+	}
+	return string(runes[:maxLen-1]) + "…"
+}
+EOF
+
 eval "$(
   go run \
     -C "$WORKDIR/tailscale" \
