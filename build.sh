@@ -64,7 +64,7 @@ env_vars=(
 
 cat > "$WORKDIR/tailscale/cmd/tailscale/cli/amnezia_truncate.go" <<EOF
 package cli
-func truncateAmneziaString(s string, maxLen int) string {
+func truncateString(s string, maxLen int) string {
 	if maxLen <= 0 {
 		return ""
 	}
