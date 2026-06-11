@@ -78,11 +78,12 @@ env "${env_vars[@]}" \
   go build \
   -C "$WORKDIR/tailscale" \
   -o "$WORKDIR/$BINARY" \
-  -tags netgo,ts_include_cli,ts_omit_aws,ts_omit_bird,ts_omit_tap,ts_omit_kube,ts_omit_completion,ts_omit_ssh,ts_omit_wakeonlan,ts_omit_capture,ts_omit_relayserver,ts_omit_taildrop,ts_omit_tpm \
+  -tags netgo,ts_include_cli,ts_omit_aws,ts_omit_bird,ts_omit_tap,ts_omit_kube,ts_omit_ssh,ts_omit_wakeonlan,ts_omit_capture,ts_omit_relayserver,ts_omit_taildrop,ts_omit_tpm \
   -ldflags="$ldflags" \
   -trimpath \
   ./cmd/tailscaled >/dev/null
-
+# Origin tags
+# -tags netgo,ts_include_cli,ts_omit_aws,ts_omit_bird,ts_omit_tap,ts_omit_kube,ts_omit_completion,ts_omit_ssh,ts_omit_wakeonlan,ts_omit_capture,ts_omit_relayserver,ts_omit_taildrop,ts_omit_tpm
 SIZE=$(du -h "$WORKDIR/$BINARY" | awk '{print $1}')
 echo "✓ Built $BINARY"
 
