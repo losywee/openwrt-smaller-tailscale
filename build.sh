@@ -12,7 +12,7 @@ if [ -z "$VERSION" ] || [ -z "$ARCH" ]; then
 fi
 
 if [ "$VERSION" = "lts" ]; then
-  VERSION=$(curl -s https://api.github.com/repos/tailscale/tailscale/releases/latest | jq -r .tag_name | cut -c2-)
+  VERSION=$(curl -s https://api.github.com/repos/github.com/LiuTangLei//tailscale/releases/latest | jq -r .tag_name | cut -c2-)
 fi
 
 case "$ARCH" in
@@ -44,7 +44,7 @@ git \
   --filter=blob:none \
   --depth=1 \
   --branch "v${VERSION}" \
-  https://github.com/tailscale/tailscale \
+  https://github.com/LiuTangLei//tailscale \
   "$WORKDIR/tailscale"
 
 FILE_NAME="tailscale_${VERSION}_${ARCH}${GOARM:+_$GOARM}"
