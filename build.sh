@@ -12,7 +12,7 @@ if [ -z "$VERSION" ] || [ -z "$ARCH" ]; then
 fi
 
 if [ "$VERSION" = "lts" ]; then
-  VERSION=$(curl -s https://api.github.com/repos/github.com/LiuTangLei//tailscale/releases/latest | jq -r .tag_name | cut -c2-)
+  VERSION=$(curl -s https://api.github.com/repos/LiuTangLei/tailscale/releases/latest | jq -r .tag_name | cut -c2-)
 fi
 
 case "$ARCH" in
